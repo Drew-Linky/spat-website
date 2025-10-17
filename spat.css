@@ -1,0 +1,656 @@
+:root {
+  color-scheme: light dark;
+}
+
+html{
+  border-color: light-dark(#F3F3F4, #121214);
+  border-style: solid;
+  border-width: 0px 200px;
+  min-height: 100%
+}
+
+body {
+  background-color: light-dark(#ffffff, #242429);
+  color: light-dark(#222222, #ffffff);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+  text-overflow: break-word;
+  word-wrap:break-word;
+}
+
+p {
+  clear: both;
+}
+
+.imgcaption {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.headers {
+  margin: auto;
+  background-color: light-dark(#DDDDE0, #2C2C30);
+  max-width:362px;
+  margin: auto;
+  padding: 0px 10px;
+  font-size: 1.4em;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.joinicon {
+  float: right;
+  font-size: 1em;
+  position: relative;
+  bottom: 3px;
+}
+
+.markup {
+  font-family: monospace;
+  font-size:16px;
+  color: #B9BBBE;
+  border-style:solid;
+  border-width: 1px;
+}
+
+img {
+  max-width:75%;
+  max-height:600px;
+  margin: auto;
+  display: block;
+}
+
+.avatar {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position:relative;
+  top:80px;
+  right:70px;
+  margin-top: -60px;
+  -webkit-filter: hue-rotate(0deg);
+}
+
+audio {
+  width:100%;
+}
+
+.sticky{
+  position: fixed;
+  right: 0px;
+}
+
+video {
+  width:100%;
+}
+
+.emote {
+  height:48px;
+  width:48px;
+  display: inline-block;
+}
+
+.smallemote{
+  width:24px;
+  height:24px;
+  display: inline-block;
+}
+
+.titles {
+  width:auto;
+}
+
+.top {
+  font-size: 1.3em;
+  color: #00cc00;
+  font-weight: bold;
+}
+
+.makin {
+  color: #f35626;
+  font-weight: bold;
+  font-size: 1.3em;
+  background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 1s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+
+a {
+  color: rgb(27, 150, 197);
+  text-decoration: none;
+}
+
+.date {
+  color: #a3a6aa;
+  font-size:1.2em;
+}
+
+hr {
+  border-top: 1px solid rgb(62, 65, 71);
+  border-bottom: 1px solid rgb(62, 65, 71);
+  border-right: 1px solid rgb(62, 65, 71);
+  border-left: 1px solid rgb(62, 65, 71);
+}
+
+.stupid{
+height:800px;
+width:500px;
+}
+
+.entries{
+  width:60%;
+  text-align: justify;
+  margin: auto;
+}
+
+.sidenavbutton {
+  font-size: 32px;
+  height:45px;
+  width:45px;
+  position:fixed;
+  border: 2px;
+  border-style: solid;
+  border-color: light-dark(#000000, #ffffff);
+  text-align:center;
+  left: 250px;
+}
+
+ /* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: light-dark(#b0b0b0, #000000); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.3em;
+  color: light-dark(#000000, #ffffff);
+  display: block;
+  transition: 0.3s;
+  border-color:rgb(62, 65, 71);
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width:1px;
+  
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: light-dark(#2a2a2a,#b8b8b8);
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  border: none;
+}
+
+@media screen and (max-width: 600px){
+  html{
+  background-color: light-dark(#F3F3F4, #121214);
+  border-style: solid;
+  border-width: 0px 0px;
+  min-height: 100%;
+  }
+
+  blockquote{
+    width:100%;
+    margin-left: 0;
+  }
+
+  head {
+    max-width:100%;
+    margin-top: 10px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size:1.2em;
+  }
+
+  h2 {
+    font-size:1.1em;
+  }
+
+  h3 {
+    font-size:1em;
+  }
+
+  h4 {
+    font-size:1em;
+  }
+
+  body {
+  text-align: justify;
+  font-size: 1em;
+  min-height: 100%;
+  overflow-x: hidden;
+  }
+
+  .entries {
+  width:80%;
+  }
+
+  .avatar {
+    display: none;
+  }
+
+  /* On smaller screens, where height is less than 600px, change the style of the sidenav (less padding and a smaller font size) */
+  .sidenavbutton {
+  top:50px;
+  left:15px;
+  position:sticky;
+  border: 1px;
+  border-style: solid;
+  border-color: light-dark(#000000, #ffffff);
+  font-size: 16px;
+  width:22px;
+  height:22px;
+  text-align:center;
+}
+
+  .sidenav {
+  overflow: scroll;
+  height: 100vh;
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 15; /* Stay on top */
+  top: 0; /* Stay at the top */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 15px;
+  left:10px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+
+
+  .headers {
+    max-width:75%;
+    font-size:1.2em
+  }
+
+  hr {
+    margin: auto;
+    width: auto;
+  }
+
+  img {
+    max-width: 60vw;
+    max-height: 40vh;
+  }
+
+  .imgcaption {
+    width: 75%;
+  }
+  
+  .stupid{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.ghostyTrickster {
+  font-size: 1.3em;
+  color: #0715cd;
+  font-weight: bold;
+}
+
+.lighterghostyTrickster {
+  font-size: 1.3em;
+  color: #535ef9;
+  font-weight: bold;
+}
+
+.pastelghostyTrickster {
+  font-size: 1.3em;
+  color: #b5bafc;
+  font-weight: bold;
+}
+
+.darkerghostyTrickster {
+  font-size: 1.3em;
+  color: #393f97;
+  font-weight: bold;
+}
+
+.tentacleTherapist {
+  font-size: 1.3em;
+  color: #b536da;
+  font-weight: bold;
+}
+
+.lightertentacleTherapist {
+  font-size: 1.3em;
+  color: #cf7ee7;
+  font-weight: bold;
+}
+
+.pasteltentacleTherapist {
+  font-size: 1.3em;
+  color: #e7bef3;
+  font-weight: bold;
+}
+
+.darkertentacleTherapist {
+  font-size: 1.3em;
+  color: #924496;
+  font-weight: bold;
+}
+
+.turntechGodhead {
+  font-size: 1.3em;
+  color: #e00707;
+  font-weight: bold;
+}
+
+.lighterturntechGodhead {
+  font-size: 1.3em;
+  color: #fa5252;
+  font-weight: bold;
+}
+
+.pastelturntechGodhead {
+  font-size: 1.3em;
+  color: #fc9c9c;
+  font-weight: bold;
+}
+
+.darkerturntechGodhead {
+  font-size: 1.3em;
+  color: #b23c3c;
+  font-weight: bold;
+}
+
+.gardenGnostic {
+  font-size: 1.3em;
+  color: 	#4ac925;
+  font-weight: bold;
+}
+
+.lightergardenGnostic {
+  font-size: 1.3em;
+  color: 	#85e368;
+  font-weight: bold;
+}
+
+.pastelgardenGnostic {
+  font-size: 1.3em;
+  color: 	#b9efa9;
+  font-weight: bold;
+}
+
+.darkergardenGnostic {
+  font-size: 1.3em;
+  color: 	#00a8cc;
+  font-weight: bold;
+}
+
+.gutsyGumshoe {
+  font-size: 1.3em;
+  color: 	#00d5f2;
+  font-weight: bold;
+}
+
+.lightergutsyGumshoe {
+  font-size: 1.3em;
+  color: 	#66edff;
+  font-weight: bold;
+}
+
+.pastelgutsyGumshoe {
+  font-size: 1.3em;
+  color: 	#ccf9ff;
+  font-weight: bold;
+}
+
+.darkergutsyGumshoe {
+  font-size: 1.3em;
+  color: 	#2f98a6;
+  font-weight: bold;
+}
+
+.tipsyGnostalgic {
+  font-size: 1.3em;
+  color: 	#ff6ff2;
+  font-weight: bold;
+}
+
+.lightertipsyGnostalgic {
+  font-size: 1.3em;
+  color: 	#ff99f7;
+  font-weight: bold;
+}
+
+.pasteltipsyGnostalgic {
+  font-size: 1.3em;
+  color: 	#ffccf9;
+  font-weight: bold;
+}
+
+.darkertipsyGnostalgic {
+  font-size: 1.3em;
+  color: 	#df147a;
+  font-weight: bold;
+}
+
+.timaeusTestified {
+  font-size: 1.3em;
+  color: 	#f2a400;
+  font-weight: bold;
+}
+
+.lightertimaeusTestified {
+  font-size: 1.3em;
+  color: 	#ffc64d;
+  font-weight: bold;
+}
+
+.pasteltimaeusTestified {
+  font-size: 1.3em;
+  color: 	#ffd780;
+  font-weight: bold;
+}
+
+.darkertimaeusTestified {
+  font-size: 1.3em;
+  color: 	#cc8b00;
+  font-weight: bold;
+}
+
+.golgothasTerror {
+  font-size: 1.3em;
+  color: #1f9400;
+  font-weight: bold;
+}
+
+.lightergolgothasTerror {
+  font-size: 1.3em;
+  color: #3fc21a;
+  font-weight: bold;
+}
+
+.pastelgolgothasTerror {
+  font-size: 1.3em;
+  color: #6bf645;
+  font-weight: bold;
+}
+
+.darkergolgothasTerror {
+  font-size: 1.3em;
+  color: #146436;
+  font-weight: bold;
+}
+
+.megido {
+  font-size: 1.3em;
+  color: #a10000;
+  font-weight: bold;
+}
+
+.nitram {
+  font-size: 1.3em;
+  color: #a15000;
+  font-weight: bold;
+}
+
+.captor {
+  font-size: 1.3em;
+  color: #a7a502;
+  font-weight: bold;
+}
+
+.lime {
+  font-size: 1.3em;
+  color: #658200;
+  font-weight: bold;
+}
+
+.leijon {
+  font-size: 1.3em;
+  color: #416600;
+  font-weight: bold;
+}
+
+.maryam {
+  font-size: 1.3em;
+  color: #008141;
+  font-weight: bold;
+}
+
+.pyrope {
+  font-size: 1.3em;
+  color: #008282;
+  font-weight: bold;
+}
+
+.serket {
+  font-size: 1.3em;
+  color: #005682;
+  font-weight: bold;
+}
+
+.zahhak {
+  font-size: 1.3em;
+  color: #000056;
+  font-weight: bold;
+}
+
+.makara {
+  font-size: 1.3em;
+  color: #2b0057;
+  font-weight: bold;
+}
+
+.ampora {
+  font-size: 1.3em;
+  color: #6a006a;
+  font-weight: bold;
+}
+
+.peixes {
+  font-size: 1.3em;
+  color: #77003c;
+  font-weight: bold;
+}
+
+.vantas {
+  font-size: 1.3em;
+  color: #626262;
+  font-weight: bold;
+}
+
+.scratch {
+  font-size: 1.3em;
+  color: light-dark(#000000, #ffffff);
+  font-weight: bold;
+}
+
+.blapck {
+  font-size: 1.3em;
+  color: light-dark(#000000, #ffffff);
+  font-weight: bold;
+}
+
+.joeyclaire {
+  font-size: 1.3em;
+  color: #42a258;
+  font-weight: bold;
+}
+
+.judeharley {
+  font-size: 1.3em;
+  color: #11afb0;
+  font-weight: bold;
+}
+
+.xefros {
+  font-size: 1.3em;
+  color: #840405;
+  font-weight: bold;
+}
+
+.dammek {
+  font-size: 1.3em;
+  color: #7e4206;
+  font-weight: bold;
+}
+
+.calliope {
+  font-size: 1.3em;
+  color: #2ed73a;
+  font-weight: bold;
+}
+
+.caliborn {
+  font-size: 1.3em;
+  color: #323232;
+  font-weight: bold;
+}
+
+.sweetbro {
+  font-size: 1.3em;
+  color: #e80230;
+  font-weight: bold;
+}
+
+.hellajeff {
+  font-size: 1.3em;
+  color: #023cff;
+  font-weight: bold;
+}
+
+.geromy {
+  font-size: 1.3em;
+  color: #fffe03;
+  font-weight: bold;
+}
