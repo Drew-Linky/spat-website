@@ -654,3 +654,24 @@ width:500px;
   color: #fffe03;
   font-weight: bold;
 }
+
+/* Timeline CSS */
+.panel-container{
+  overflow: hidden
+}
+.panel-body{
+  max-height: 0;
+  transition: all 1s ease-out;
+}
+.panel-body a{
+  font-size: 1.1em;
+  padding-left: 52px;
+}
+#panel-toggle::before{
+  font-family: monospace;
+  float: right;
+  content: '+';
+}
+#panel-toggle.active::before{
+  content: '-';
+}
