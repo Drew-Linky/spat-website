@@ -3,11 +3,13 @@ body {
     height: 5vh;
     background-color: #000000;
     margin: auto;
+    color:#eeeeee;
     }
 
 h1 {
     background-color: #85baa1;
     margin: auto;
+    color: #000000;
 }
 
 .spat {background-color: #36393f;

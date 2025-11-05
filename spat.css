@@ -74,6 +74,13 @@ img {
   margin-top: -60px;
   -webkit-filter: hue-rotate(0deg);
 }
+.bot {
+  border-style: solid;
+  border-color: #5865F2;
+  background: #5865F2;
+  color: #ffffff;
+  border-radius: 7px;
+}
 
 audio {
   width:100%;
