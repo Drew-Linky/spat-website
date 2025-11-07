@@ -75,11 +75,7 @@ function buildPanel(titleText) {
 	panelToggle.addEventListener('click', function(e) {
 		e.preventDefault();
 		panelToggle.classList.toggle('active');
-		if (panelBody.style.maxHeight) {
-			panelBody.style.maxHeight = '';
-		} else {
-			panelBody.style.maxHeight = panelBody.scrollHeight + "px";
-		}
+		panelContainer.classList.toggle('open');
 	});
 
 	const panelLabel = document.createElement('span');

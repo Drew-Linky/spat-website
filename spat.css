@@ -184,7 +184,7 @@ width:500px;
 
  /* The side navigation menu */
 .sidenav {
-  height: 100%; /* 100% Full-height */
+  height: 100svh; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
@@ -192,7 +192,8 @@ width:500px;
   left: 0;
   background-color: light-dark(#b0b0b0, #000000); /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding: 60px 0; /* Place content 60px from the top and the bottom */
+  box-sizing: border-box; 
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -292,13 +293,14 @@ width:500px;
 
   .sidenav {
   overflow: scroll;
-  height: 100vh;
+  height: 100svh;
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 15; /* Stay on top */
   top: 0; /* Stay at the top */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 15px;
+  padding: 60px 0;
   left:10px;
+  box-sizing: border-box;
   }
 
   .sidenav a {
@@ -669,15 +671,19 @@ width:500px;
 
 /* Timeline CSS */
 .panel-container{
-  overflow: hidden
+  display: grid;
+  transition: grid-template-rows 0.4s ease-out;
+  grid-template-rows: 0fr;
 }
 .panel-body{
-  max-height: 0;
-  transition: all 1s ease-out;
+  overflow: hidden;
 }
 .panel-body a{
   font-size: 1.1em;
   padding-left: 52px;
+}
+.panel-container.open{
+  grid-template-rows: 1fr;
 }
 #panel-toggle::before{
   font-family: monospace;
