@@ -10,15 +10,13 @@ function closeNav() {
 
 /* Timeline JS */
 
-const HEADING_SELECTOR = 'h2, h3, .date';
 const SIDENAV_NAME = 'mySidenav';
-const TOGGLE_TEXT = 'Timeline'; // This changes the text that is in the sidenav, if you want to put some other thing.
 
 /**
  * This functions generates the panel inside the sidenav, and attatches ids to the headings for them to be clickable.
  */
-function createTimeline() {
-	const headings = Array.from(document.querySelectorAll(HEADING_SELECTOR));
+function createTimeline(headingSelector, toggleText) {
+	const headings = Array.from(document.querySelectorAll(headingSelector));
 	if (headings.length < 2) return; // We don't want to create a 'timeline' for websites under 2 titles
 
 	const sidenav = document.querySelector(`#${SIDENAV_NAME}`);
@@ -28,7 +26,7 @@ function createTimeline() {
 		panelContainer,
 		panelToggle,
 		panelBody
-	} = buildPanel(TOGGLE_TEXT);
+	} = buildPanel(toggleText);
 
 	headings.forEach((heading, index) => {
 		const slug = `section-${slugify(heading.textContent)}` || `section-${index}`;
@@ -105,7 +103,17 @@ function slugify(str) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-  createTimeline();
+  // Default configuration
+  var headingSelector = 'h2, h3, .date';
+  var toggleText = 'Timeline';
+
+  switch(window.location.pathname.split('/').pop().split('.')[0]){
+	case 'vocespopuli':
+		headingSelector = 'img.avatar + p';
+		toggleText = 'Submissions';
+		break;
+  }
+  createTimeline(headingSelector, toggleText);
 
   // This animates the scrolling inside the document.
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
