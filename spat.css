@@ -123,13 +123,9 @@ video {
 }
 
 .makin {
-  color: #f35626;
+  color: #ff33ff;
   font-weight: bold;
   font-size: 1.3em;
-  background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: hue 1s infinite linear;
 }
 
 @-webkit-keyframes hue {
