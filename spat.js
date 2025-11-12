@@ -102,7 +102,18 @@ function slugify(str) {
   return str;
 }
 
-document.addEventListener("DOMContentLoaded", function(event) { 
+let where = '';
+let trickCount = 0;
+let tricksterLoaded = false;
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  
+	document.querySelectorAll('link').forEach(el => {
+    if(el.href.split('/').pop().split('.')[0] == 'spat'){
+      where = el.href.split('/').slice(0, -1).join('/');
+    }
+	});
+
   // Default configuration
   var headingSelector = 'h2, h3, .date';
   var toggleText = 'Timeline';
@@ -114,6 +125,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		break;
   }
   createTimeline(headingSelector, toggleText);
+
+  if(localStorage.getItem("tricksterMode") == "true"){
+      loadTrickster();
+  }
+
+  document.getElementById('front-cover').addEventListener('click', function(e) {
+    trickCount += 1;
+    if(trickCount >= 7){
+      trickCount = 0;
+      let storedValue = localStorage.getItem("tricksterMode");
+      
+      let oldState = (storedValue === "true"); 
+      
+      let newState = !oldState; 
+      
+      localStorage.setItem("tricksterMode", newState); 
+      
+      if(newState) {
+        loadTrickster()
+      }
+      else{
+        location.reload()
+      };
+    }
+  });
 
   // This animates the scrolling inside the document.
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -136,3 +172,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
   });
 });
+
+
+function loadTrickster(){
+  if(tricksterLoaded) return;
+  tricksterLoaded = true;
+	console.log(where);
+	const script = document.createElement('script');
+	script.src = where + '/trickster.js';
+	document.head.appendChild(script);
+	script.onload = () => {
+		trickster();
+	};
+}
