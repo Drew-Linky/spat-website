@@ -962,7 +962,26 @@ function delay(ms) {
  * @param {Node} newNode - Node that will be placed after the reference.
  */
 function insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  try {
+    const parent = referenceNode.parentNode;
+
+    if (!parent) {
+      throw new Error("Reference node does not have a parent, insertion failed.");
+    }
+
+    let nodeToInsert = newNode;
+
+    if (typeof newNode === 'string') {
+      const range = document.createRange();
+      range.selectNode(referenceNode);
+      nodeToInsert = range.createContextualFragment(newNode);
+    }
+
+    parent.insertBefore(nodeToInsert, referenceNode.nextSibling);
+
+  } catch (error) {
+  console.error("DOM Insertion Failed:", error.message, error);
+  }
 }
 
 /**
