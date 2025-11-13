@@ -279,7 +279,7 @@ function outputConsole (data, arquius = false, html = false){
         el.innerHTML = data;
         pcOut.append(el);
         pcIn.disabled = false;
-        return;
+        return el;
     }else{
         dataIn = dataIn.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
         
