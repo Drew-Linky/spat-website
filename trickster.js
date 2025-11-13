@@ -49,6 +49,17 @@ let videoJson;
  */
 function trickster(){
 
+  // Credits Nero for her wonderful work
+
+   try{
+    frontCover = document.getElementById('front-cover')
+    neroCredit = document.createElement('center')
+    neroCredit.innerHTML = `<p><i>Trickster Mode coded by Nero. Have fun!</i></p>`
+    insertAfter(frontCover, neroCredit)
+    }catch(e){
+    console.log('Nero can\'t be credited sadFace.')
+  }
+
   // Changes the document theme to 'trickster'.
 	const html = document.documentElement;
 	html.dataset.theme = 'trickster';
