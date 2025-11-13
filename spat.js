@@ -10,15 +10,13 @@ function closeNav() {
 
 /* Timeline JS */
 
-const HEADING_SELECTOR = 'h2, h3, .date';
 const SIDENAV_NAME = 'mySidenav';
-const TOGGLE_TEXT = 'Timeline'; // This changes the text that is in the sidenav, if you want to put some other thing.
 
 /**
  * This functions generates the panel inside the sidenav, and attatches ids to the headings for them to be clickable.
  */
-function createTimeline() {
-	const headings = Array.from(document.querySelectorAll(HEADING_SELECTOR));
+function createTimeline(headingSelector, toggleText) {
+	const headings = Array.from(document.querySelectorAll(headingSelector));
 	if (headings.length < 2) return; // We don't want to create a 'timeline' for websites under 2 titles
 
 	const sidenav = document.querySelector(`#${SIDENAV_NAME}`);
@@ -28,7 +26,7 @@ function createTimeline() {
 		panelContainer,
 		panelToggle,
 		panelBody
-	} = buildPanel(TOGGLE_TEXT);
+	} = buildPanel(toggleText);
 
 	headings.forEach((heading, index) => {
 		const slug = `section-${slugify(heading.textContent)}` || `section-${index}`;
@@ -104,8 +102,54 @@ function slugify(str) {
   return str;
 }
 
-document.addEventListener("DOMContentLoaded", function(event) { 
-  createTimeline();
+let where = '';
+let trickCount = 0;
+let tricksterLoaded = false;
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  
+	document.querySelectorAll('link').forEach(el => {
+    if(el.href.split('/').pop().split('.')[0] == 'spat'){
+      where = el.href.split('/').slice(0, -1).join('/');
+    }
+	});
+
+  // Default configuration
+  var headingSelector = 'h2, h3, .date';
+  var toggleText = 'Timeline';
+
+  switch(window.location.pathname.split('/').pop().split('.')[0]){
+	case 'vocespopuli':
+		headingSelector = 'img.avatar + p';
+		toggleText = 'Submissions';
+		break;
+  }
+  createTimeline(headingSelector, toggleText);
+
+  if(localStorage.getItem("tricksterMode") == "true"){
+      loadTrickster();
+  }
+
+  document.getElementById('front-cover').addEventListener('click', function(e) {
+    trickCount += 1;
+    if(trickCount >= 7){
+      trickCount = 0;
+      let storedValue = localStorage.getItem("tricksterMode");
+      
+      let oldState = (storedValue === "true"); 
+      
+      let newState = !oldState; 
+      
+      localStorage.setItem("tricksterMode", newState); 
+      
+      if(newState) {
+        loadTrickster()
+      }
+      else{
+        location.reload()
+      };
+    }
+  });
 
   // This animates the scrolling inside the document.
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -128,3 +172,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
   });
 });
+
+
+function loadTrickster(){
+  if(tricksterLoaded) return;
+  tricksterLoaded = true;
+	console.log(where);
+	const script = document.createElement('script');
+	script.src = where + '/trickster.js';
+	document.head.appendChild(script);
+	script.onload = () => {
+		trickster();
+	};
+}
