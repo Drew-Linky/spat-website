@@ -54,7 +54,7 @@ function trickster(){
    try{
     frontCover = document.getElementById('front-cover')
     neroCredit = document.createElement('center')
-    neroCredit.innerHTML = `<p><i>Trickster Mode coded by Nero. Have fun!</i></p>`
+    neroCredit.innerHTML = `<p><i>Trickster Mode coded by Nero. Have fun!<br>Got an idea for more stuff to add? <a href="https://docs.google.com/forms/d/1s6YppdG8iXdvClScx08FlRrQqWHV0jZnNlxJR46_j9s/edit" target="_blank">Submit your idea here!</i></p>`
     insertAfter(frontCover, neroCredit)
     }catch(e){
     console.log('Nero can\'t be credited sadFace.')
