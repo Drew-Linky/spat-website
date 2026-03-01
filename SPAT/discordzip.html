@@ -67,7 +67,9 @@
             .pc-box{scroll-snap-type: unset;}
             .match{color: #3D9970;}
         </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/@zip.js/zip.js@2.8.21/dist/zip.min.js"></script>
+
         <script>
 
             const homestuckId = "152981670507577344";
@@ -86,7 +88,62 @@
                 div.innerText = text;
                 log.append(div);
             }
+            async function handleFile(file) {
+                if (!file.name.endsWith('.zip')) addLog(`Only works with the unaltered Discord data zip file.`);
+                console.log(zip);
+                const zipFileReader = new zip.ZipReader(new zip.BlobReader(file));
+                const zipFileWriter = new zip.ZipWriter(new zip.BlobWriter("application/zip"));
+                
+                const userName = document.getElementById('username').value.trim();
+                const fileName = userName ? `${userName}_hsd_messages.zip` : `hsd_messages.zip`;
 
+                try{
+                    addLog("Reading package...");
+                    const entries = await zipFileReader.getEntries();
+                    const channelEntries = entries.filter(e => e.filename.endsWith('channel.json'));
+                    
+                    let i = 0;
+
+                    for(const entry of channelEntries){
+                        const text = await entry.getData(new zip.TextWriter());
+                        const json = JSON.parse(text);
+                        if (json.guild && json.guild.id === homestuckId) {
+                            addLog(`Found channel ${json.name}`, 'match');
+
+                            await zipFileWriter.add(entry.filename, new zip.TextReader(text));
+
+                            const msgPath = entry.filename.replace('channel.json', 'messages.json');
+                            const msgEntry = entries.find(e => e.filename === msgPath);
+                            
+                            if (msgEntry) {
+                                const msgBlob = await msgEntry.getData(new zip.BlobWriter());
+                                await zipFileWriter.add(msgPath, new zip.BlobReader(msgBlob));
+                            }
+                        }
+
+                        i++;
+                    }
+
+                    addLog("Generating trimmed package...");
+                    
+                    // Trigger download
+                    
+                    const blob = await zipFileWriter.close();
+                    const url = URL.createObjectURL(blob);
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = fileName;
+                    a.click();
+                    
+                    addLog("Done! The file should be in your download folder.");
+
+                }catch(e){
+                    console.error(e);
+                    addLog("Error processing file. Send a F12 Console error to DrewLinky or Nero");
+                }
+            }
+            /*
             async function handleFile(file) {
                 if (!file.name.endsWith('.zip')) addLog(`Only works with the unaltered Discord data zip file.`);
                 
@@ -143,6 +200,7 @@
                     addLog("Error processing file.");
                 }
             }
+            */
         </script>
 
     </body>
