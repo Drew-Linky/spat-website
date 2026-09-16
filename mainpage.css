@@ -41,6 +41,21 @@ h1 {
     margin: auto;
 }
 
+.personalwriting {
+    color: #ffffff;
+    background-color: #034103; 
+    font-family: "Times", sans-serif;
+    border-color: #91620a;
+    border-style: solid;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    text-align: justify;
+    padding: 15px;
+    margin: auto;
+}
+
 .streaming {
     color: #ffffff;
     font-family: "Lucida Console", Monaco, monospace;
